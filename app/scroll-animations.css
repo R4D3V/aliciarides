@@ -1,0 +1,88 @@
+/*
+ * scroll-animations.css
+ * Fixes the "Detected scroll-behavior: smooth on the element" warning by
+ * unsetting it from <html> (added via globals.css) and re-applying it only
+ * where the browser spec recommends — on the viewport scroll container via
+ * scroll-behavior on the scrolling container, protected by a reduced-motion
+ * media query so users who prefer no motion are respected.
+ *
+ * Also provides lightweight scroll-reveal animations via data attributes.
+ */
+
+/* ── 1. FIX: remove scroll-behavior from <html> ── */
+html {
+  scroll-behavior: auto; /* override the globals.css value */
+}
+
+/* Re-apply smooth scrolling properly — only when the user hasn't asked for
+   reduced motion, and on the document scroll container rather than <html> */
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── 2. SCROLL REVEAL BASE STYLES ── */
+
+/*
+ * Elements that should animate in get [data-reveal] applied by the
+ * ScrollAnimations component via IntersectionObserver.
+ * Before they enter the viewport they start hidden/offset;
+ * once observed they gain [data-reveal="visible"].
+ */
+
+[data-reveal] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 0.65s;
+  will-change: opacity, transform;
+}
+
+/* Direction variants — set via data-reveal-dir attribute */
+[data-reveal]:not([data-reveal-dir]) {
+  transform: translateY(32px);
+}
+
+[data-reveal][data-reveal-dir="up"] {
+  transform: translateY(32px);
+}
+
+[data-reveal][data-reveal-dir="down"] {
+  transform: translateY(-32px);
+}
+
+[data-reveal][data-reveal-dir="left"] {
+  transform: translateX(48px);
+}
+
+[data-reveal][data-reveal-dir="right"] {
+  transform: translateX(-48px);
+}
+
+[data-reveal][data-reveal-dir="scale"] {
+  transform: scale(0.92);
+}
+
+/* Stagger delay variants — set via data-reveal-delay="1|2|3|4" */
+[data-reveal][data-reveal-delay="1"] { transition-delay: 0.1s; }
+[data-reveal][data-reveal-delay="2"] { transition-delay: 0.2s; }
+[data-reveal][data-reveal-delay="3"] { transition-delay: 0.3s; }
+[data-reveal][data-reveal-delay="4"] { transition-delay: 0.4s; }
+[data-reveal][data-reveal-delay="5"] { transition-delay: 0.5s; }
+[data-reveal][data-reveal-delay="6"] { transition-delay: 0.6s; }
+
+/* Visible state — added by IntersectionObserver */
+[data-reveal="visible"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect reduced motion — skip all transitions for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Brand palette — drawn from the crochet logo */
+  --color-brand-pink: #e91e8c;
+  --color-brand-teal: #00bcd4;
+  --color-brand-yellow: #f5c400;
+  --color-brand-purple: #8b3fc2;
+  --color-brand-red: #e53935;
+  --color-brand-orange: #f5960a;
+  --color-brand-green: #4caf50;
+  --color-brand-blue: #2979ff;
+  --color-cream: #faf8f5;
+  --color-cream-dark: #f0ebe3;
+  --color-charcoal: #1a1a2e;
+
+  --radius-pill: 9999px;
+  --radius-card: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+}
+
+/* Utility: rainbow gradient text matching the logo */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-brand-pink) 0%,
+    var(--color-brand-orange) 25%,
+    var(--color-brand-yellow) 45%,
+    var(--color-brand-green) 65%,
+    var(--color-brand-blue) 85%,
+    var(--color-brand-purple) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Knit-texture card border */
+.knit-border {
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.knit-border::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--color-brand-pink),
+    var(--color-brand-orange),
+    var(--color-brand-yellow),
+    var(--color-brand-green),
+    var(--color-brand-blue)
+  );
+  z-index: -1;
+}
+
+/* Wavy section divider */
+.wavy-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* ── CAR ANIMATION KEYFRAMES ── */
+@keyframes car-ltr {
+  0%   { transform: translateX(-200px); }
+  100% { transform: translateX(calc(100vw + 200px)); }
+}
+
+@keyframes car-rtl {
+  0%   { transform: translateX(calc(100vw + 200px)) scaleX(-1); }
+  100% { transform: translateX(-200px) scaleX(-1); }
+}
+
+@keyframes car-ltr-flip {
+  0%   { transform: translateX(-200px) scaleX(1); }
+  100% { transform: translateX(calc(100vw + 200px)) scaleX(1); }
+}
+
+/* Wheel spin animation */
+@keyframes spin-wheel {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.car-ltr {
+  animation: car-ltr linear infinite;
+}
+.car-rtl {
+  animation: car-rtl linear infinite;
+}
