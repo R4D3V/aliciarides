@@ -17,7 +17,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--color-cream)]/90 backdrop-blur-md border-b border-[var(--color-cream-dark)] shadow-sm">
+    <header className="fixed top-0 left-0 w-full z-50 bg-[var(--color-cream)]/90 backdrop-blur-md border-b border-[var(--color-cream-dark)] shadow-sm">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
@@ -37,7 +37,7 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <ul className="hidden lg:flex items-center gap-0.5">
-          {navLinks.slice(1, -1).map((link) => (
+          {navLinks.slice(1).map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
