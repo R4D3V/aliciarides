@@ -4,6 +4,9 @@
 @theme {
   --font-poppins: "Poppins", sans-serif;
 
+  /* Custom breakpoint for very small phones (iPhone SE and similar) */
+  --breakpoint-xs: 22.5rem; /* 360px */
+
   /* Brand palette — drawn from the crochet logo */
   --color-brand-pink: #e91e8c;
   --color-brand-teal: #00bcd4;
@@ -27,12 +30,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-poppins);
   background-color: var(--color-cream);
   color: var(--color-charcoal);
+  overflow-x: hidden;
 }
 
 /* Utility: rainbow gradient text matching the logo */

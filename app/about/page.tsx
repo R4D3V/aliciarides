@@ -178,7 +178,7 @@ export default function AboutPage() {
               <p className="text-sm text-[var(--color-charcoal)]/55 mt-2">— Alicia, Founder</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 xs:grid-cols-2 gap-4">
             {[
               { icon: "🇺🇬", label: "Proudly Ugandan", sub: "Born & built in Uganda" },
               { icon: "🤝", label: "Client-First", sub: "You're always our priority" },

@@ -241,7 +241,7 @@ export default function ContactPage() {
               <label className="text-sm font-semibold text-[var(--color-charcoal)]">
                 Service Needed *
               </label>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
                 {services.map((s) => (
                   <label
                     key={s.label}

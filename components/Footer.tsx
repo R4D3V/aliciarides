@@ -7,9 +7,9 @@ export default function Footer() {
       className="bg-[var(--color-charcoal)] text-white mt-20"
       style={{ position: "relative", zIndex: 1 }}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 sm:grid-cols-4 gap-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Brand */}
-        <div className="flex flex-col gap-3 sm:col-span-1">
+        <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20 flex-shrink-0">
               <Image
